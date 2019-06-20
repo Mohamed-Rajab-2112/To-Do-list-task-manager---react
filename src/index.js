@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import "assets/styles/styles.css";
-import "assets/css/demo.css";
+import "./assets/styles/styles.css";
+import "./assets/css/demo.css";
 import App from "./views/App";
 import {createStore, applyMiddleware, compose} from "redux";
 import {Provider} from "react-redux";
