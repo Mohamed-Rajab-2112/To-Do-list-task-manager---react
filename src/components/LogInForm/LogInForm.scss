@@ -1,0 +1,159 @@
+@import "../../assets/scss/light-theme";
+@import "../../assets/scss/dark-theme";
+@import "../../assets/scss/style-utilities";
+
+.log-in-form-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .intro-section {
+    width: 100%;
+    margin-top: 10%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      width: 8%;
+    }
+    h3 {
+      margin-top: 10px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  }
+  .log-in-form {
+    margin-top: 10%;
+    width: 50%;
+    small {
+      color: $dt-midColor;
+    }
+    .label-container {
+      position: relative;
+      span {
+        position: absolute;
+        left: -50px;
+        top: 37px;
+        transform: rotate(270deg);
+        display: inline-block;
+        font-size: 0.8em;
+      }
+    }
+    .label-container:first-child {
+      span {
+        top: 10px;
+        left: -47px;
+      }
+    }
+    button {
+      margin: 25px auto 0;
+      width: 75%;
+    }
+    .forgot-password {
+      font-size: 0.8em;
+    }
+  }
+  .change-language-and-theme-container {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+    .language {
+      span {
+        margin: 10px 10px 0;
+        cursor: pointer;
+      }
+    }
+    .themes {
+      display: flex;
+      & > div {
+        height: 25px;
+        width: 25px;
+        margin: 10px 10px 0;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .dark {
+        background-color: $dt-darkColor;
+        border: 1px solid $dt-lightColor;
+      }
+      .light {
+        background-color: $lt-lightColor;
+        border: 1px solid $lt-darkColor;
+      }
+    }
+  }
+}
+
+@each $theme in $themes {
+  #root.#{$theme} {
+    .log-in-form-container {
+      @if $theme == dark-theme {
+        background-color: $dt-semiDarkColor;
+        .intro-section {
+          h3 {
+            color: $dt-lightColor;
+          }
+        }
+        .log-in-form {
+          .label-container {
+            color: $dt-lightColor;
+            .active {
+              color: $dt-midColor !important;
+            }
+          }
+          .forgot-password {
+            font-size: 0.8em;
+            color: $dt-lightColor;
+            &:hover {
+              cursor: pointer;
+              color: $dt-midColor;
+            }
+          }
+        }
+        .change-language-and-theme-container {
+          .language {
+            span {
+              color: $dt-lightColor;
+              &.active-lang {
+                font-weight: bold;
+                color: $dt-midColor;
+              }
+            }
+          }
+        }
+      } @else {
+        //background-color: $lt-lightColor;
+        .log-in-form {
+          .label-container {
+            .active {
+              color: $lt-midColor;
+            }
+          }
+          .forgot-password {
+            font-size: 0.8em;
+            &:hover {
+              cursor: pointer;
+              color: $lt-midColor;
+            }
+          }
+        }
+        .change-language-and-theme-container {
+          .language {
+            span {
+              color: $lt-darkColor;
+              &.active-lang {
+                font-weight: bold;
+                color: $lt-midColor;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

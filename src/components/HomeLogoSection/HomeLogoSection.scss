@@ -1,0 +1,46 @@
+@import "../../assets/scss/light-theme";
+@import "../../assets/scss/dark-theme";
+@import "../../assets/scss/style-utilities";
+
+.home-logo-section-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    img {
+      width: 35%;
+    }
+  }
+}
+
+@each $theme in $themes {
+  #root.#{$theme} {
+    .home-logo-section-container {
+      @if $theme == dark-theme {
+        background-color: $dt-darkColor;
+        p {
+          color: $dt-lightColor;
+        }
+      } @else {
+        background-color: $dt-lightColor;
+        p {
+          color: $lt-darkColor;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .home-logo-section-container {
+    .logo {
+      img {
+        width: 50%;
+      }
+    }
+  }
+}

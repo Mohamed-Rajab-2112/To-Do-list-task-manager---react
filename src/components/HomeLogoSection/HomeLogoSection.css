@@ -1,0 +1,25 @@
+.home-logo-section-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column; }
+  .home-logo-section-container .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; }
+    .home-logo-section-container .logo img {
+      width: 35%; }
+
+#root.dark-theme .home-logo-section-container {
+  background-color: #000; }
+  #root.dark-theme .home-logo-section-container p {
+    color: #eee; }
+
+#root.light-theme .home-logo-section-container {
+  background-color: #eee; }
+  #root.light-theme .home-logo-section-container p {
+    color: #000; }
+
+@media screen and (max-width: 769px) {
+  .home-logo-section-container .logo img {
+    width: 50%; } }

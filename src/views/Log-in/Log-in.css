@@ -1,0 +1,13 @@
+.log-in-view-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between; }
+  .log-in-view-container > div {
+    width: 50%; }
+
+@media screen and (max-width: 426px) {
+  .log-in-view-container > div {
+    width: 100%; }
+    .log-in-view-container > div:first-child {
+      display: none; } }

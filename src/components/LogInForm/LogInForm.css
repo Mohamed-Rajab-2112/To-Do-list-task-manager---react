@@ -1,0 +1,99 @@
+.log-in-form-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .log-in-form-container .intro-section {
+    width: 100%;
+    margin-top: 10%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .log-in-form-container .intro-section img {
+      width: 8%; }
+    .log-in-form-container .intro-section h3 {
+      margin-top: 10px;
+      font-size: 1.2em;
+      font-weight: bold; }
+  .log-in-form-container .log-in-form {
+    margin-top: 10%;
+    width: 50%; }
+    .log-in-form-container .log-in-form small {
+      color: #FF5C56; }
+    .log-in-form-container .log-in-form .label-container {
+      position: relative; }
+      .log-in-form-container .log-in-form .label-container span {
+        position: absolute;
+        left: -50px;
+        top: 37px;
+        transform: rotate(270deg);
+        display: inline-block;
+        font-size: 0.8em; }
+    .log-in-form-container .log-in-form .label-container:first-child span {
+      top: 10px;
+      left: -47px; }
+    .log-in-form-container .log-in-form button {
+      margin: 25px auto 0;
+      width: 75%; }
+    .log-in-form-container .log-in-form .forgot-password {
+      font-size: 0.8em; }
+  .log-in-form-container .change-language-and-theme-container {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center; }
+    .log-in-form-container .change-language-and-theme-container .language span {
+      margin: 10px 10px 0;
+      cursor: pointer; }
+    .log-in-form-container .change-language-and-theme-container .themes {
+      display: flex; }
+      .log-in-form-container .change-language-and-theme-container .themes > div {
+        height: 25px;
+        width: 25px;
+        margin: 10px 10px 0;
+        border-radius: 50%;
+        cursor: pointer; }
+      .log-in-form-container .change-language-and-theme-container .themes .dark {
+        background-color: #000;
+        border: 1px solid #eee; }
+      .log-in-form-container .change-language-and-theme-container .themes .light {
+        background-color: #eee;
+        border: 1px solid #000; }
+
+#root.dark-theme .log-in-form-container {
+  background-color: #111; }
+  #root.dark-theme .log-in-form-container .intro-section h3 {
+    color: #eee; }
+  #root.dark-theme .log-in-form-container .log-in-form .label-container {
+    color: #eee; }
+    #root.dark-theme .log-in-form-container .log-in-form .label-container .active {
+      color: #FF5C56 !important; }
+  #root.dark-theme .log-in-form-container .log-in-form .forgot-password {
+    font-size: 0.8em;
+    color: #eee; }
+    #root.dark-theme .log-in-form-container .log-in-form .forgot-password:hover {
+      cursor: pointer;
+      color: #FF5C56; }
+  #root.dark-theme .log-in-form-container .change-language-and-theme-container .language span {
+    color: #eee; }
+    #root.dark-theme .log-in-form-container .change-language-and-theme-container .language span.active-lang {
+      font-weight: bold;
+      color: #FF5C56; }
+
+#root.light-theme .log-in-form-container .log-in-form .label-container .active {
+  color: #FF5C56; }
+
+#root.light-theme .log-in-form-container .log-in-form .forgot-password {
+  font-size: 0.8em; }
+  #root.light-theme .log-in-form-container .log-in-form .forgot-password:hover {
+    cursor: pointer;
+    color: #FF5C56; }
+
+#root.light-theme .log-in-form-container .change-language-and-theme-container .language span {
+  color: #000; }
+  #root.light-theme .log-in-form-container .change-language-and-theme-container .language span.active-lang {
+    font-weight: bold;
+    color: #FF5C56; }

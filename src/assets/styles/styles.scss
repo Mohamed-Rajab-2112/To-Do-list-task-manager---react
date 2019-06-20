@@ -1,0 +1,16 @@
+@import "../scss/now-ui-dashboard.scss";
+
+/*global styles*/
+
+html {
+  height: 100%;
+  body {
+    height: 100%;
+    #root {
+      height: 100%;
+      .form-control {
+        height: 35px;
+      }
+    }
+  }
+}
