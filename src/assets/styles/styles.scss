@@ -1,15 +1,192 @@
 @import "../scss/now-ui-dashboard.scss";
-
+@import "../../assets/scss/dark-theme";
+@import "../../assets/scss/style-utilities";
 /*global styles*/
 
 html {
   height: 100%;
+
   body {
     height: 100%;
+
+    small {
+      color: $dt-midColor;
+    }
+
+    .pac-container.pac-logo.hdpi {
+      z-index: 10000 !important;
+    }
+
+    .main-panel {
+      display: flex;
+      flex-direction: column;
+
+      footer {
+        margin-top: auto;
+      }
+    }
+
     #root {
       height: 100%;
+
+      &.en .card {
+        text-align: left;
+      }
+
+      .main-panel {
+        position: static;
+      }
+
+      .page-container {
+        width: $containerWidth;
+        margin: 100px auto 0;
+
+        .loading-container {
+          display: flex;
+          justify-content: center;
+        }
+      }
+
       .form-control {
         height: 35px;
+        font-size: 1em;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      button {
+        i.fas.fa-circle-notch.fa-spin.fa-3x.fa-fw {
+          font-size: 1.2em;
+          position: absolute;
+          right: 10px;
+        }
+      }
+
+      @each $theme in $themes {
+        &.#{$theme} {
+          @if $theme == dark-theme {
+            .sidebar {
+              background-color: $dt-semiDarkColor;
+            }
+
+            .navbar {
+              background-color: $dt-semiDarkColor;
+
+              * {
+                color: $dt-lightColor;
+              }
+            }
+
+            .p-paginator {
+              background-color: $dt-semiDarkColor !important;
+              border: none;
+            }
+
+            .input {
+              color: $dt-lightColor;
+
+              &:focus {
+                background-color: $dt-darkColor;
+                color: $dt-lightColor;
+              }
+            }
+
+            //.main-panel {
+            //  background-color: $dt-darkColor;
+
+            .card {
+              background-color: $lt-lightColor;
+
+              * {
+                color: $dt-semiDarkColor;
+              }
+            }
+            //}
+          } @else {
+            .sidebar {
+              background-color: $lt-white;
+
+              li {
+                color: $secondaryColor;
+
+                .active {
+                  background-color: $lt-darkColor;
+
+                  p {
+                    color: $lt-midColor;
+                  }
+                }
+
+                p {
+                  color: $lt-darkColor;
+                }
+
+                a:hover {
+                  background-color: $lt-darkColor;
+
+                  p {
+                    color: $lt-midColor;
+                  }
+                }
+              }
+
+              .lang-and-theme {
+                select {
+                  color: $lt-darkColor !important;
+
+                  &:active,
+                  &:focus {
+                    border: 1px solid $lt-darkColor;
+
+                    option {
+                      color: black;
+                    }
+                  }
+                }
+              }
+            }
+
+            .navbar {
+              background-color: $lt-white;
+
+              * {
+                color: $lt-darkColor;
+              }
+            }
+
+            .p-paginator {
+              background-color: $lt-white !important;
+              border: none;
+            }
+
+            .input {
+              color: $lt-darkColor;
+
+              &:focus {
+                background-color: $lt-lightColor;
+                color: $lt-darkColor;
+              }
+            }
+
+            //.main-panel {
+            //  background-color: $lt-lightColor;
+
+            .card {
+              background-color: $lt-white;
+
+              * {
+                color: $lt-darkColor;
+              }
+            }
+            //}
+          }
+        }
+      }
+
+      .table-responsive {
+        overflow: auto;
       }
     }
   }

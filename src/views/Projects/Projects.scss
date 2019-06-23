@@ -1,0 +1,100 @@
+@import "../../assets/scss/light-theme";
+@import "../../assets/scss/dark-theme";
+@import "../../assets/scss/style-utilities";
+
+.projects-page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .projects-page-header {
+    height: 7%;
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid $dt-midColor;
+    flex-shrink: 1;
+
+    .logo-and-title-container {
+      flex-grow: 1;
+      display: flex;
+
+      img {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    .change-theme-container {
+      //margin-top: auto;
+      //width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row-reverse;
+      align-items: center;
+
+      .themes {
+        display: flex;
+
+        & > div {
+          height: 25px;
+          width: 25px;
+          margin: 10px 10px 0;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+
+        .dark {
+          background-color: $dt-darkColor;
+          border: 1px solid $dt-lightColor;
+        }
+
+        .light {
+          background-color: $lt-lightColor;
+          border: 1px solid $lt-darkColor;
+        }
+      }
+    }
+  }
+
+  .projects-container {
+    //flex-grow: 1;
+    height: 93%;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px percentage(50/885);
+
+    .single-project-card {
+      width: 200px;
+      height: 250px;
+      margin: 10px;
+    }
+  }
+}
+
+@each $theme in $themes {
+  #root.#{$theme} {
+    .projects-page-container {
+      @if $theme == dark-theme {
+        .projects-page-header {
+          background-color: $dt-darkColor;
+          color: $dt-lightColor;
+        }
+        .projects-container {
+          background-color: $dt-semiDarkColor;
+        }
+      } @else {
+        .projects-page-header {
+          background-color: $lt-white;
+          color: $lt-darkColor;
+        }
+        .projects-container {
+          background-color: $lt-lightColor;
+        }
+      }
+    }
+  }
+}

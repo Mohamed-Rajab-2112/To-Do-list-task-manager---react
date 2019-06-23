@@ -14,4 +14,5 @@ var dashRoutes = [
     name: "Dashboard"
   },
 ];
+
 export default dashRoutes;
