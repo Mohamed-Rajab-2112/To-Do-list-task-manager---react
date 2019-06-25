@@ -4134,19 +4134,27 @@ html {
         html body #root.dark-theme .input:focus {
           background-color: #000;
           color: #eee; }
+      html body #root.dark-theme p {
+        color: #eee; }
       html body #root.dark-theme .card {
         background-color: #eee; }
         html body #root.dark-theme .card * {
           color: #111; }
+        html body #root.dark-theme .card a {
+          color: #007ad9; }
       html body #root.light-theme .input {
         color: #000; }
         html body #root.light-theme .input:focus {
           background-color: #eee;
           color: #000; }
+      html body #root.light-theme p {
+        color: #000; }
       html body #root.light-theme .card {
         background-color: #fff; }
         html body #root.light-theme .card * {
           color: #000; }
+        html body #root.light-theme .card a {
+          color: #007ad9; }
       html body #root .table-responsive {
         overflow: auto; }
     html body textarea {

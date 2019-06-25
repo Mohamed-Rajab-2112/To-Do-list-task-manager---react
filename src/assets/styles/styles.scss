@@ -26,7 +26,6 @@ html {
       }
     }
 
-
     button {
       i.fas.fa-circle-notch.fa-spin.fa-fw {
         font-size: 15px !important;
@@ -77,11 +76,19 @@ html {
               }
             }
 
+            p {
+              color: $dt-lightColor;
+            }
+
             .card {
               background-color: $lt-lightColor;
 
               * {
                 color: $dt-semiDarkColor;
+              }
+
+              a {
+                color: #007ad9;
               }
             }
           } @else {
@@ -94,11 +101,19 @@ html {
               }
             }
 
+            p {
+              color: $lt-darkColor;
+            }
+
             .card {
               background-color: $lt-white;
 
               * {
                 color: $lt-darkColor;
+              }
+
+              a {
+                color: #007ad9;
               }
             }
           }

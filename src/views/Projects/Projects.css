@@ -14,7 +14,30 @@
     .projects-page-container .projects-container .single-project-card {
       width: 200px;
       height: 250px;
-      margin: 10px; }
+      margin: 10px;
+      position: relative; }
+      .projects-page-container .projects-container .single-project-card .fa.fa-times {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1;
+        color: #FF5C56; }
+      .projects-page-container .projects-container .single-project-card .card h6 {
+        height: 32px; }
+      .projects-page-container .projects-container .single-project-card .card .brief-text {
+        height: 115px;
+        overflow-y: auto; }
+      .projects-page-container .projects-container .single-project-card .card .actions-container {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; }
+        .projects-page-container .projects-container .single-project-card .card .actions-container i {
+          color: #007ad9 !important; }
+          .projects-page-container .projects-container .single-project-card .card .actions-container i.fa-angle-double-right {
+            font-size: 1.5em; }
+        .projects-page-container .projects-container .single-project-card .card .actions-container a {
+          line-height: 14px; }
     .projects-page-container .projects-container .add-new-project-button {
       width: 45px;
       height: 45px;
@@ -26,9 +49,9 @@
       position: absolute;
       right: 20px;
       bottom: 40px; }
-      .projects-page-container .projects-container .add-new-project-button i {
+      .projects-page-container .projects-container .add-new-project-button .fa.fa-plus {
         color: white;
-        font-size: 1.5em; }
+        font-size: 1.75em; }
 
 #root.dark-theme .projects-page-container .projects-page-header {
   background-color: #000;

@@ -4,11 +4,15 @@ import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { Field, Form, Formik } from "formik";
 import {
   assignPropertiesFromBackEndToFormFields,
+  getCurrentUserDetails,
   showErrorMessage
 } from "../../utiities/sharedMethods";
 import { ProjectFormFields } from "../../utiities/constants";
 import * as Yup from "yup";
-import { postNewProject } from "../../api/api-calls/projects-api-calls";
+import {
+  postNewProject,
+  updateProject
+} from "../../api/api-calls/projects-api-calls";
 import "./addEditProjectModal.css";
 
 export class AddEditProjectModal extends React.PureComponent {
@@ -17,26 +21,52 @@ export class AddEditProjectModal extends React.PureComponent {
   state = {
     toggleLoadingSaveButton: false
   };
+  projectData;
 
-  projectData = assignPropertiesFromBackEndToFormFields(
-    this.props.projectData,
-    ProjectFormFields
-  );
+  componentWillUpdate(nextProps, nextState, nextContext) {
+    this.projectData = assignPropertiesFromBackEndToFormFields(
+      nextProps.projectData,
+      ProjectFormFields
+    );
+    this.projectData.id = nextProps.projectData.id;
+  }
 
   saveProject = values => {
     this.setState({
       toggleLoadingSaveButton: true
     });
-    postNewProject(values)
-      .then(() => {
-        this.setState({
-          toggleLoadingSaveButton: false
+    values.projectOwnerId = getCurrentUserDetails().id;
+    if (this.projectData.id) {
+      updateProject(values)
+        .then(() => {
+          this.setState({
+            toggleLoadingSaveButton: false
+          });
+          this.closeModal();
+          this.props.updateProjectsList();
+        })
+        .catch(err => {
+          this.setState({
+            toggleLoadingSaveButton: false
+          });
+          showErrorMessage(err.message);
         });
-        this.closeModal();
-      })
-      .catch(err => {
-        showErrorMessage(err.message);
-      });
+    } else {
+      postNewProject(values)
+        .then(() => {
+          this.setState({
+            toggleLoadingSaveButton: false
+          });
+          this.closeModal();
+          this.props.updateProjectsList();
+        })
+        .catch(err => {
+          this.setState({
+            toggleLoadingSaveButton: false
+          });
+          showErrorMessage(err.message);
+        });
+    }
   };
 
   renderFormFields(formProps) {
@@ -78,8 +108,8 @@ export class AddEditProjectModal extends React.PureComponent {
   render() {
     return (
       <div>
-        <Modal isOpen={this.props.addProductModalStatus}>
-          <ModalHeader>{this.t("Add_New_Project")}</ModalHeader>
+        <Modal isOpen={this.props.toggleModalStatus}>
+          <ModalHeader>{this.t("Project")}</ModalHeader>
           <Formik
             onSubmit={this.saveProject}
             initialValues={this.projectData}

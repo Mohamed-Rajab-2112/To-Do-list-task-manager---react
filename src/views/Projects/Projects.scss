@@ -22,6 +22,43 @@
       width: 200px;
       height: 250px;
       margin: 10px;
+      position: relative;
+
+      .fa.fa-times {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1;
+        color: $dt-midColor;
+      }
+
+      .card {
+
+        h6 {
+          height: 32px;
+        }
+
+        .brief-text {
+          height: 115px;
+          overflow-y: auto;
+        }
+
+        .actions-container {
+          margin-top: auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          i {
+            color: #007ad9 !important;
+          &.fa-angle-double-right {
+            font-size: 1.5em;
+          }
+          }
+          a {
+            line-height: 14px;
+          }
+        }
+      }
     }
 
     .add-new-project-button {
@@ -36,9 +73,9 @@
       right: 20px;
       bottom: 40px;
 
-      i {
+      .fa.fa-plus {
         color: white;
-        font-size: 1.5em;
+        font-size: 1.75em;
       }
     }
   }

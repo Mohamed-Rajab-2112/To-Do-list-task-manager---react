@@ -1,14 +1,14 @@
 import React from "react";
-import {Link, withRouter} from "react-router-dom";
-import {Field, Form, Formik} from "formik";
+import { Link, withRouter } from "react-router-dom";
+import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import {withNamespaces} from "react-i18next";
+import { withNamespaces } from "react-i18next";
 import "./SignUpForm.css";
-import {signUp} from "../../api/api-calls/index";
-import {showErrorMessage} from "../../utiities/sharedMethods";
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
-import {logIn} from "../../store/actions/save-user-data-action";
+import { signUp } from "../../api/api-calls/index";
+import { showErrorMessage } from "../../utiities/sharedMethods";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { logIn } from "../../store/actions/save-user-data-action";
 
 class SignUpForm extends React.PureComponent {
   t = this.props.t;
@@ -20,7 +20,7 @@ class SignUpForm extends React.PureComponent {
     this.setState(prevState => {
       return {
         toggleLoadingSingUpButton: !prevState.toggleLoadingSingUpButton
-      }
+      };
     });
     signUp(values)
       .then(() => {
@@ -29,6 +29,11 @@ class SignUpForm extends React.PureComponent {
         });
       })
       .catch(err => {
+        this.setState(prevState => {
+          return {
+            toggleLoadingSingUpButton: !prevState.toggleLoadingSingUpButton
+          };
+        });
         showErrorMessage(err);
       });
   };
@@ -106,7 +111,7 @@ class SignUpForm extends React.PureComponent {
                   >
                     <span>{this.t("Sign_Up")}</span>
                     {this.state.toggleLoadingSingUpButton && (
-                      <i className="fas fa-circle-notch fa-spin fa-3x fa-fw pull-right"/>
+                      <i className="fas fa-circle-notch fa-spin fa-3x fa-fw pull-right" />
                     )}
                   </button>
                 </div>
@@ -120,7 +125,7 @@ class SignUpForm extends React.PureComponent {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({logIn}, dispatch);
+  return bindActionCreators({ logIn }, dispatch);
 }
 
 export default connect(

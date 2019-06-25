@@ -5,9 +5,10 @@
   "Welcome_Message": "Welcome To",
   "Password": "Password",
   "Name": "Name",
-  "Add_New_Project": "Add New Project",
+  "Project": "Project",
   "Project_Title": "Project Title",
   "Brief": "Brief",
   "Save": "Save",
+  "View_Details": "Details",
   "Email": "Email"
 }

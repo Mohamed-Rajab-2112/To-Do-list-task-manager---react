@@ -3,6 +3,7 @@ const baseUrl =
 
 export const apiUrls = () => {
   return {
-    projectsUrl: baseUrl + "projects.json"
+    projectsUrl: baseUrl + "projects",
+    usersUrl: baseUrl + 'users'
   };
 };

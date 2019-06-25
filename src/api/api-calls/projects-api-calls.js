@@ -1,29 +1,56 @@
 import axiosInstance from "../../axios/axios";
 import { apiUrls } from "../api-urls/api-urls";
+import { convertFirebaseDataStructureToArray } from "../../utiities/sharedMethods";
 
-export const postNewProject = data => {
-  return axiosInstance.post(apiUrls().projectsUrl, data).then(data => {
-    patchProject({ id: data.name })
-      .then((data) => {
-        return Promise.resolve(data);
-      })
-      .catch(err => {
-        return Promise.reject(err);
-      });
-  });
+export const postNewProject = newProjectData => {
+  return axiosInstance
+    .post(apiUrls().projectsUrl + ".json", newProjectData)
+    .then(res => {
+      return updateProject({ id: res.name })
+        .then(() => {
+          return Promise.resolve();
+        })
+        .catch(err => {
+          return Promise.reject(err);
+        });
+    });
 };
 
-export const patchProject = data => {
-  return axiosInstance.patch('https://my-task-manager-app.firebaseio.com/projects/' + data.id + '.json', data);
+export const updateProject = data => {
+  return axiosInstance.patch(
+    apiUrls().projectsUrl + "/" + data.id + ".json",
+    data
+  );
 };
 
 export const getAllProjects = () => {
-  return axiosInstance.get(apiUrls().projectsUrl);
+  return axiosInstance.get(apiUrls().projectsUrl + ".json").then(data => {
+    return Promise.resolve(convertFirebaseDataStructureToArray(data));
+  });
 };
 
-export const getProjectById = id => {
+export const getProjectByProjectId = id => {
   return axiosInstance.get(
     apiUrls().projectsUrl +
-      '?orderBy="$key"&startAt=" + id + "&endAt=" + id + "'
+      '.json?orderBy="$key"&startAt=" + id + "&endAt=" + id + "'
   );
+};
+
+export const getProjectByOwnerId = id => {
+  return axiosInstance
+    .get(
+      apiUrls().projectsUrl +
+        '.json?orderBy="projectOwnerId"&startAt="' +
+        id +
+        '"&endAt="' +
+        id +
+        '"&print=pretty'
+    )
+    .then(data => {
+      return Promise.resolve(convertFirebaseDataStructureToArray(data));
+    });
+};
+
+export const deleteProject = id => {
+  return axiosInstance.delete(apiUrls().projectsUrl + "/" + id + ".json");
 };
