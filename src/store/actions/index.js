@@ -7,3 +7,6 @@ export {
 export {
   changeTheme
 } from './change_theme_action'
+export {
+  logOut
+} from './log_out_action'

@@ -1,0 +1,72 @@
+@import "../../assets/scss/light-theme";
+@import "../../assets/scss/dark-theme";
+@import "../../assets/scss/style-utilities";
+
+.projects-page-header {
+  height: 7%;
+  display: flex;
+  align-items: center;
+  border-bottom: 3px solid $dt-midColor;
+  flex-shrink: 1;
+
+  .logo-and-title-container {
+    flex-grow: 1;
+    display: flex;
+
+    img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  .change-theme-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+
+    .themes {
+      display: flex;
+
+      & > div {
+        height: 25px;
+        width: 25px;
+        margin: 0 10px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .dark {
+        background-color: $dt-darkColor;
+        border: 1px solid $dt-lightColor;
+      }
+
+      .light {
+        background-color: $lt-lightColor;
+        border: 1px solid $lt-darkColor;
+      }
+
+      p {
+        color: $dt-midColor;
+        line-height: 28px;
+      }
+    }
+  }
+}
+
+@each $theme in $themes {
+  #root.#{$theme} {
+    @if $theme == dark-theme {
+      .projects-page-header {
+        background-color: $dt-darkColor;
+        color: $dt-lightColor;
+      }
+    } @else {
+      .projects-page-header {
+        background-color: $lt-white;
+        color: $lt-darkColor;
+      }
+    }
+  }
+}
+

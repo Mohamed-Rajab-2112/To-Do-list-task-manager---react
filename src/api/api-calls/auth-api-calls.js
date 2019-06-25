@@ -23,3 +23,15 @@ export const signUp = userData => {
       return Promise.reject(err.message);
     });
 };
+
+export const signOut = () => {
+  return firebase
+    .auth()
+    .signOut()
+    .then(res => {
+      return Promise.resolve(res)
+    })
+    .catch(err => {
+      return Promise.reject(err.message);
+    });
+};

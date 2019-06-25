@@ -4108,6 +4108,10 @@ html {
       flex-direction: column; }
       html body .main-panel footer {
         margin-top: auto; }
+    html body button i.fas.fa-circle-notch.fa-spin.fa-fw {
+      font-size: 15px !important;
+      position: absolute;
+      right: 10px; }
     html body #root {
       height: 100%; }
       html body #root.en .card {
@@ -4125,19 +4129,6 @@ html {
         font-size: 1em; }
       html body #root a {
         text-decoration: none; }
-      html body #root button i.fas.fa-circle-notch.fa-spin.fa-3x.fa-fw {
-        font-size: 1.2em;
-        position: absolute;
-        right: 10px; }
-      html body #root.dark-theme .sidebar {
-        background-color: #111; }
-      html body #root.dark-theme .navbar {
-        background-color: #111; }
-        html body #root.dark-theme .navbar * {
-          color: #eee; }
-      html body #root.dark-theme .p-paginator {
-        background-color: #111 !important;
-        border: none; }
       html body #root.dark-theme .input {
         color: #eee; }
         html body #root.dark-theme .input:focus {
@@ -4147,33 +4138,6 @@ html {
         background-color: #eee; }
         html body #root.dark-theme .card * {
           color: #111; }
-      html body #root.light-theme .sidebar {
-        background-color: #fff; }
-        html body #root.light-theme .sidebar li {
-          color: #0B2031; }
-          html body #root.light-theme .sidebar li .active {
-            background-color: #000; }
-            html body #root.light-theme .sidebar li .active p {
-              color: #FF5C56; }
-          html body #root.light-theme .sidebar li p {
-            color: #000; }
-          html body #root.light-theme .sidebar li a:hover {
-            background-color: #000; }
-            html body #root.light-theme .sidebar li a:hover p {
-              color: #FF5C56; }
-        html body #root.light-theme .sidebar .lang-and-theme select {
-          color: #000 !important; }
-          html body #root.light-theme .sidebar .lang-and-theme select:active, html body #root.light-theme .sidebar .lang-and-theme select:focus {
-            border: 1px solid #000; }
-            html body #root.light-theme .sidebar .lang-and-theme select:active option, html body #root.light-theme .sidebar .lang-and-theme select:focus option {
-              color: black; }
-      html body #root.light-theme .navbar {
-        background-color: #fff; }
-        html body #root.light-theme .navbar * {
-          color: #000; }
-      html body #root.light-theme .p-paginator {
-        background-color: #fff !important;
-        border: none; }
       html body #root.light-theme .input {
         color: #000; }
         html body #root.light-theme .input:focus {
@@ -4185,3 +4149,9 @@ html {
           color: #000; }
       html body #root .table-responsive {
         overflow: auto; }
+    html body textarea {
+      border-radius: 10px !important;
+      padding: 10px !important;
+      border: 1px solid #e3e3e3 !important; }
+      html body textarea:focus {
+        border-color: #f96332 !important; }

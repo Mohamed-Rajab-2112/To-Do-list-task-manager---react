@@ -1,258 +1,70 @@
-import React from 'react';
-import './Projects.css'
-import {connect} from "react-redux";
-import {Card, CardBody, CardHeader, CardTitle} from "reactstrap";
-import {changeTheme} from '../../store/actions/index'
-import {bindActionCreators} from 'redux'
+import React from "react";
+import "./Projects.css";
+import { connect } from "react-redux";
+import { Card, CardBody, CardHeader, CardTitle } from "reactstrap";
+import { changeTheme } from "../../store/actions/index";
+import { logOutServer } from "../../store/actions/log_out_action";
+import { bindActionCreators } from "redux";
+import { withRouter } from "react-router-dom";
+import AddEditProjectModal from "../../components/AddEditProjectModal/AddEditProjectModal";
 
-const Projects = props => {
-  const logo = require('../../' + props.appLogo);
-  return (
-    <div className="projects-page-container ">
-      <div className="full-with projects-page-header padding-left-15 uk-animation-fade">
-        <div className='logo-and-title-container'>
-          <img alt={"logo"} src={logo}/>
-          <h5 className='no-margin margin-left-10'>Task Manager</h5>
-        </div>
+class Projects extends React.PureComponent {
+  state = {
+    addProductModalStatus: false
+  };
 
-        <div className={"change-theme-container"}>
-          <div className={"themes"}>
-            <div
-              onClick={() => props.changeTheme("dark-theme")}
-              className={"dark"}
-            />
-            <div
-              onClick={() => props.changeTheme("light-theme")}
-              className={"light"}
-            />
+  toggleAddProjectModal = () => {
+    this.setState(prevStatus => {
+      return {
+        addProductModalStatus: !prevStatus.addProductModalStatus
+      };
+    });
+  };
+
+  render() {
+    return (
+      <div className="projects-page-container ">
+        <div className="projects-container scrollbar">
+          <div className="single-project-card">
+            <Card className="full-height full-width card">
+              <CardHeader>
+                <CardTitle tag="h4">Project Name</CardTitle>
+              </CardHeader>
+              <CardBody>
+                <p>Some brief is here</p>
+              </CardBody>
+            </Card>
           </div>
+
+          <button
+            className="add-new-project-button clickable"
+            onClick={this.toggleAddProjectModal}
+          >
+            <i className="fa fa-plus"></i>
+          </button>
         </div>
 
+        <AddEditProjectModal
+          projectData={{}}
+          {...this.state}
+          closeModal={this.toggleAddProjectModal}
+        />
       </div>
-      <div className='projects-container scrollbar'>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-        <div className='single-project-card'>
-          <Card className='full-height full-width card'>
-            <CardHeader>
-              <CardTitle tag="h4">Project Name</CardTitle>
-            </CardHeader>
-            <CardBody>
-              <p>Some brief is here</p>
-            </CardBody>
-          </Card>
-        </div>
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     ...state.sharedReducer
-  }
+  };
 };
 
 function mapActionToProps(dispatch) {
-  return bindActionCreators({changeTheme}, dispatch)
+  return bindActionCreators({ changeTheme, logOutServer }, dispatch);
 }
 
-export default connect(mapStateToProps, mapActionToProps)(Projects);
+export default connect(
+  mapStateToProps,
+  mapActionToProps
+)(withRouter(Projects));
