@@ -12,10 +12,10 @@ import {changeTheme} from "../store/actions/index";
 import 'primereact/resources/themes/nova-light/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-import {getCurrentUserDetails, growlMessage} from "../utiities/sharedMethods";
+import {growlMessage} from "../utiities/sharedMethods";
 import {Growl} from 'primereact/growl';
 
-const hist = createBrowserHistory();
+export const hist = createBrowserHistory();
 
 i18next.use(reactI18nextModule).init({
   interpolation: {escapeValue: false},
@@ -30,7 +30,7 @@ i18next.use(reactI18nextModule).init({
 class App extends Component {
 
   componentDidMount() {
-    this.props.changeTheme(this.props.sharedReducer.theme);
+    this.props.changeTheme(this.props.theme);
     this.subscribeToGrowl()
   }
 
@@ -46,20 +46,21 @@ class App extends Component {
         <Growl ref={(el) => this.growl = el}/>
         <Router history={hist}>
           <Switch>
-            {getCurrentUserDetails() && <Route path={"/projects"}
-                                               component={LazyLoadingComponent(
-                                                 () => import("../views/Projects/Projects"))}/>}
+            {this.props.isAuth && <Route path={"/home"}
+                                         component={LazyLoadingComponent(
+                                           () => import("../layouts/Home/Home"))}/>}
 
-            {getCurrentUserDetails() && (
-              <Redirect from="**" to="/projects"/>
+
+            {!this.props.isAuth && <Route path={"/"}
+                                          component={LazyLoadingComponent(
+                                            () => import("../views/Log-in/Log-in"))}/>};
+
+
+            {this.props.isAuth && (
+              <Redirect from="**" to="/home"/>
             )}
 
-
-            {!getCurrentUserDetails() && <Route path={"/"}
-                                                component={LazyLoadingComponent(
-                                                  () => import("../views/Log-in/Log-in"))}/>};
-
-            {!getCurrentUserDetails() && (
+            {!this.props.isAuth && (
               <Redirect from="**" to="/"/>
             )}
 
@@ -72,7 +73,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    sharedReducer: state.sharedReducer,
+    ...state.sharedReducer,
+    ...state.authReducer
   };
 }
 

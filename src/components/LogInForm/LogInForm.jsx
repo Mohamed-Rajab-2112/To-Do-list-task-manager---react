@@ -20,7 +20,7 @@ class LogInFormComponent extends React.PureComponent {
     this.props
       .logIn(values)
       .then(() => {
-        this.props.history.push("/projects");
+        this.props.history.push("/home");
       })
       .catch(msg => {
         showErrorMessage(msg, "Can't Log in");

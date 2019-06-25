@@ -1,7 +1,7 @@
 import React from "react";
 import PerfectScrollbar from "perfect-scrollbar";
 import {Route, Switch, Redirect} from "react-router-dom";
-import {Header, Footer, Sidebar} from "../../components";
+import {Footer, Sidebar} from "../../components";
 import dashboardRoutes from "../../routes/dashboard.jsx";
 
 var ps;
@@ -33,7 +33,6 @@ class Dashboard extends React.Component {
       <div className="wrapper">
         <Sidebar {...this.props} routes={dashboardRoutes}/>
         <div className="main-panel" ref="mainPanel">
-          <Header {...this.props} />
           <Switch>
             {dashboardRoutes.map((prop, key) => {
               if (prop.collapse) {

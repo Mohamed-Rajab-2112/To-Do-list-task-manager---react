@@ -13,11 +13,15 @@ import { logIn } from "../../store/actions/save-user-data-action";
 class SignUpForm extends React.PureComponent {
   t = this.props.t;
   state = {
-    toggleLoadingSingInButton: false
+    toggleLoadingSingUpButton: false
   };
 
   handleSubmit = values => {
-    console.log(values);
+    this.setState(prevState => {
+      return {
+        toggleLoadingSingUpButton: !prevState.toggleLoadingSingUpButton
+      };
+    });
     signUp(values)
       .then(() => {
         this.props.logIn(values).then(() => {
@@ -25,6 +29,11 @@ class SignUpForm extends React.PureComponent {
         });
       })
       .catch(err => {
+        this.setState(prevState => {
+          return {
+            toggleLoadingSingUpButton: !prevState.toggleLoadingSingUpButton
+          };
+        });
         showErrorMessage(err);
       });
   };
@@ -96,12 +105,12 @@ class SignUpForm extends React.PureComponent {
                   <Link to={"/"}>{this.t("Sign_In")}</Link>
 
                   <button
-                    disabled={this.state.toggleLoadingSingInButton}
+                    disabled={this.state.toggleLoadingSingUpButton}
                     type="submit"
                     className={"btn btn-primary block text-center"}
                   >
                     <span>{this.t("Sign_Up")}</span>
-                    {this.state.toggleLoadingSingInButton && (
+                    {this.state.toggleLoadingSingUpButton && (
                       <i className="fas fa-circle-notch fa-spin fa-3x fa-fw pull-right" />
                     )}
                   </button>

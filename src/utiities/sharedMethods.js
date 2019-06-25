@@ -1,12 +1,15 @@
-import {Subject} from "rxjs";
+import { Subject } from "rxjs";
 
 export const growlMessage = new Subject();
 
 export const getCurrentUserDetails = () => {
-  return localStorage.getItem('my-task-manager-data')
+  return JSON.parse(localStorage.getItem("my-task-manager-data"));
 };
 
-export const assignPropertiesFromBackEndToFormFields = (backEndData, fieldsData) => {
+export const assignPropertiesFromBackEndToFormFields = (
+  backEndData,
+  fieldsData
+) => {
   const extractedData = {};
   for (let field of fieldsData) {
     extractedData[field.propertyName] = backEndData[field.propertyName] || "";
@@ -14,8 +17,18 @@ export const assignPropertiesFromBackEndToFormFields = (backEndData, fieldsData)
   return extractedData;
 };
 
+export const convertFirebaseDataStructureToArray = firebaseObject => {
+  const array = [];
+  for (let key in firebaseObject) {
+    if (firebaseObject.hasOwnProperty(key)) {
+      array.push(firebaseObject[key]);
+    }
+  }
 
-export const setGrowlMessage = (msg) => {
+  return array;
+};
+
+export const setGrowlMessage = msg => {
   growlMessage.next(msg);
 };
 
