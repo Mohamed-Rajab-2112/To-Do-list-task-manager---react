@@ -1536,7 +1536,8 @@ html body {
   /*top margin*/
   /*bottom margin*/
   /*left margin*/
-  /*right margin*/ }
+  /*right margin*/
+  /***** Scroll bar styles *****/ }
   html body .color-dark-grey {
     color: #555 !important; }
   html body .color-light-grey {
@@ -1806,6 +1807,22 @@ html body {
     border: 1px solid black; }
   html body .test2 {
     border: 1px solid red; }
+  html body .scrollbar::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: #F0F2F5; }
+  html body .scrollbar::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 5px;
+    background-color: #F5F5F5; }
+  html body .scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    transition: .5s all;
+    border-radius: 5px;
+    opacity: 0; }
+    html body .scrollbar::-webkit-scrollbar-thumb:hover {
+      opacity: 1;
+      background-color: #9b9b9b;
+      transition: .5s all; }
 
 .navbar {
   padding-top: 0.625rem;
@@ -4082,7 +4099,67 @@ html {
   height: 100%; }
   html body {
     height: 100%; }
+    html body small {
+      color: #FF5C56; }
+    html body .pac-container.pac-logo.hdpi {
+      z-index: 10000 !important; }
+    html body .main-panel {
+      display: flex;
+      flex-direction: column; }
+      html body .main-panel footer {
+        margin-top: auto; }
+    html body button i.fas.fa-circle-notch.fa-spin.fa-fw {
+      font-size: 15px !important;
+      position: absolute;
+      right: 10px; }
     html body #root {
       height: 100%; }
+      html body #root.en .card {
+        text-align: left; }
+      html body #root .main-panel {
+        position: static; }
+      html body #root .page-container {
+        width: 95%;
+        margin: 100px auto 0; }
+        html body #root .page-container .loading-container {
+          display: flex;
+          justify-content: center; }
       html body #root .form-control {
-        height: 35px; }
+        height: 35px;
+        font-size: 1em; }
+      html body #root a {
+        text-decoration: none; }
+      html body #root.dark-theme .input {
+        color: #eee; }
+        html body #root.dark-theme .input:focus {
+          background-color: #000;
+          color: #eee; }
+      html body #root.dark-theme p {
+        color: #eee; }
+      html body #root.dark-theme .card {
+        background-color: #eee; }
+        html body #root.dark-theme .card * {
+          color: #111; }
+        html body #root.dark-theme .card a {
+          color: #007ad9; }
+      html body #root.light-theme .input {
+        color: #000; }
+        html body #root.light-theme .input:focus {
+          background-color: #eee;
+          color: #000; }
+      html body #root.light-theme p {
+        color: #000; }
+      html body #root.light-theme .card {
+        background-color: #fff; }
+        html body #root.light-theme .card * {
+          color: #000; }
+        html body #root.light-theme .card a {
+          color: #007ad9; }
+      html body #root .table-responsive {
+        overflow: auto; }
+    html body textarea {
+      border-radius: 10px !important;
+      padding: 10px !important;
+      border: 1px solid #e3e3e3 !important; }
+      html body textarea:focus {
+        border-color: #f96332 !important; }

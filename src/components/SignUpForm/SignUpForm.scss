@@ -1,0 +1,15 @@
+.sign-up-form-container {
+  margin: 10% auto 0;
+  width: 50%;
+
+  .buttons-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    button {
+      width: 120px;
+      position: relative;
+    }
+  }
+}

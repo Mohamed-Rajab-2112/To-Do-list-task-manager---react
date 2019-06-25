@@ -1,15 +1,137 @@
 @import "../scss/now-ui-dashboard.scss";
-
+@import "../../assets/scss/dark-theme";
+@import "../../assets/scss/style-utilities";
 /*global styles*/
 
 html {
   height: 100%;
+
   body {
     height: 100%;
+
+    small {
+      color: $dt-midColor;
+    }
+
+    .pac-container.pac-logo.hdpi {
+      z-index: 10000 !important;
+    }
+
+    .main-panel {
+      display: flex;
+      flex-direction: column;
+
+      footer {
+        margin-top: auto;
+      }
+    }
+
+    button {
+      i.fas.fa-circle-notch.fa-spin.fa-fw {
+        font-size: 15px !important;
+        position: absolute;
+        right: 10px;
+      }
+    }
+
     #root {
       height: 100%;
+
+      &.en .card {
+        text-align: left;
+      }
+
+      .main-panel {
+        position: static;
+      }
+
+      .page-container {
+        width: $containerWidth;
+        margin: 100px auto 0;
+
+        .loading-container {
+          display: flex;
+          justify-content: center;
+        }
+      }
+
       .form-control {
         height: 35px;
+        font-size: 1em;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      @each $theme in $themes {
+        &.#{$theme} {
+          @if $theme == dark-theme {
+            .input {
+              color: $dt-lightColor;
+
+              &:focus {
+                background-color: $dt-darkColor;
+                color: $dt-lightColor;
+              }
+            }
+
+            p {
+              color: $dt-lightColor;
+            }
+
+            .card {
+              background-color: $lt-lightColor;
+
+              * {
+                color: $dt-semiDarkColor;
+              }
+
+              a {
+                color: #007ad9;
+              }
+            }
+          } @else {
+            .input {
+              color: $lt-darkColor;
+
+              &:focus {
+                background-color: $lt-lightColor;
+                color: $lt-darkColor;
+              }
+            }
+
+            p {
+              color: $lt-darkColor;
+            }
+
+            .card {
+              background-color: $lt-white;
+
+              * {
+                color: $lt-darkColor;
+              }
+
+              a {
+                color: #007ad9;
+              }
+            }
+          }
+        }
+      }
+
+      .table-responsive {
+        overflow: auto;
+      }
+    }
+
+    textarea {
+      border-radius: 10px !important;
+      padding: 10px !important;
+      border: 1px solid rgb(227, 227, 227) !important;
+
+      &:focus {
+        border-color: #f96332 !important;
       }
     }
   }

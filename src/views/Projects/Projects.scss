@@ -1,0 +1,106 @@
+@import "../../assets/scss/light-theme";
+@import "../../assets/scss/dark-theme";
+@import "../../assets/scss/style-utilities";
+
+.projects-page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .projects-container {
+    //flex-grow: 1;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px percentage(50/885);
+
+    .single-project-card {
+      width: 200px;
+      height: 250px;
+      margin: 10px;
+      position: relative;
+
+      .fa.fa-times {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1;
+        color: $dt-midColor;
+      }
+
+      .card {
+
+        h6 {
+          height: 32px;
+        }
+
+        .brief-text {
+          height: 115px;
+          overflow-y: auto;
+        }
+
+        .actions-container {
+          margin-top: auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          i {
+            color: #007ad9 !important;
+          &.fa-angle-double-right {
+            font-size: 1.5em;
+          }
+          }
+          a {
+            line-height: 14px;
+          }
+        }
+      }
+    }
+
+    .add-new-project-button {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: $dt-midColor;
+      outline: none;
+      border: none;
+      box-shadow: 0 5px 10px 5px rgba(39, 39, 39, 0.1);
+      position: absolute;
+      right: 20px;
+      bottom: 40px;
+
+      .fa.fa-plus {
+        color: white;
+        font-size: 1.75em;
+      }
+    }
+  }
+}
+
+@each $theme in $themes {
+  #root.#{$theme} {
+    .projects-page-container {
+      @if $theme == dark-theme {
+        .projects-page-header {
+          background-color: $dt-darkColor;
+          color: $dt-lightColor;
+        }
+        .projects-container {
+          background-color: $dt-semiDarkColor;
+        }
+      } @else {
+        .projects-page-header {
+          background-color: $lt-white;
+          color: $lt-darkColor;
+        }
+        .projects-container {
+          background-color: $lt-lightColor;
+        }
+      }
+    }
+  }
+}

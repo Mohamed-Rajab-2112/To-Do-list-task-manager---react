@@ -5,6 +5,52 @@
   justify-content: space-between; }
   .log-in-view-container > div {
     width: 50%; }
+  .log-in-view-container .log-in-and-sign-up-container {
+    display: flex;
+    flex-direction: column; }
+  .log-in-view-container .intro-section {
+    width: 100%;
+    margin-top: 10%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .log-in-view-container .intro-section img {
+      width: 8%; }
+    .log-in-view-container .intro-section h3 {
+      margin-top: 10px;
+      font-size: 1.2em;
+      font-weight: bold; }
+  .log-in-view-container .change-theme-container {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center; }
+    .log-in-view-container .change-theme-container .themes {
+      display: flex; }
+      .log-in-view-container .change-theme-container .themes > div {
+        height: 25px;
+        width: 25px;
+        margin: 10px 10px 0;
+        border-radius: 50%;
+        cursor: pointer; }
+      .log-in-view-container .change-theme-container .themes .dark {
+        background-color: #000;
+        border: 1px solid #eee; }
+      .log-in-view-container .change-theme-container .themes .light {
+        background-color: #eee;
+        border: 1px solid #000; }
+
+#root.dark-theme {
+  background-color: #111; }
+  #root.dark-theme .intro-section {
+    background-color: #111; }
+    #root.dark-theme .intro-section h3 {
+      color: #eee; }
+  #root.dark-theme .change-theme-container {
+    background-color: #111; }
 
 @media screen and (max-width: 426px) {
   .log-in-view-container > div {
