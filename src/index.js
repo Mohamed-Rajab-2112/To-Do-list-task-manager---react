@@ -4,19 +4,25 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./assets/styles/styles.css";
 import "./assets/css/demo.css";
 import App from "./views/App";
-import {createStore, applyMiddleware, compose} from "redux";
-import {Provider} from "react-redux";
-import rootReducer from "./reducers/reducers_root";
-import thunk from 'redux-thunk'
+import { createStore, applyMiddleware, compose } from "redux";
+import { Provider } from "react-redux";
+import rootReducer from "./store/reducers/reducers_root";
+import thunk from "redux-thunk";
+import * as firebase from "firebase/app";
+import { firebaseConfig } from "./utiities/constants";
+
+firebase.initializeApp(firebaseConfig);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk))
+);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
-  </Provider>
-  ,
-  document.getElementById("root"),
+    <App />
+  </Provider>,
+  document.getElementById("root")
 );

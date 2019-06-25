@@ -1,5 +1,4 @@
 import i18next from "i18next";
-import {Subject} from 'rxjs/Subject';
 
 export const changeLanguage = (state, lang) => {
   if (lang !== state.lang) {
@@ -26,10 +25,4 @@ export const changeTheme = (state, theme) => {
     ...state,
     theme,
   };
-};
-
-export const growlMessage = new Subject();
-
-export const setGrowlMessage = (msg) => {
-  growlMessage.next(msg)
 };

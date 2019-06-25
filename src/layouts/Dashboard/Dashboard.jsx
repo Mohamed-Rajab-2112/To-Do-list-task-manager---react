@@ -1,8 +1,7 @@
 import React from "react";
-// javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
-import { Route, Switch, Redirect } from "react-router-dom";
-import { Header, Footer, Sidebar } from "../../components";
+import {Route, Switch, Redirect} from "react-router-dom";
+import {Header, Footer, Sidebar} from "../../components";
 import dashboardRoutes from "../../routes/dashboard.jsx";
 
 var ps;
@@ -32,7 +31,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <Sidebar {...this.props} routes={dashboardRoutes} />
+        <Sidebar {...this.props} routes={dashboardRoutes}/>
         <div className="main-panel" ref="mainPanel">
           <Header {...this.props} />
           <Switch>
@@ -49,13 +48,13 @@ class Dashboard extends React.Component {
                 });
               }
               if (prop.redirect)
-                return <Redirect from={prop.path} to={prop.pathTo} key={key} />;
+                return <Redirect from={prop.path} to={prop.pathTo} key={key}/>;
               return (
-                <Route path={prop.path} component={prop.component} key={key} />
+                <Route path={prop.path} component={prop.component} key={key}/>
               );
             })}
           </Switch>
-          <Footer fluid />
+          <Footer fluid/>
         </div>
       </div>
     );
