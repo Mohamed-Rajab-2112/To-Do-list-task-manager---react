@@ -1,0 +1,31 @@
+@import 'ui-component-syles/variables';
+@import 'ui-component-syles/mixins';
+// Plugins CSS
+@import "ui-component-syles/plugins/plugin-animate-bootstrap-notify";
+@import "ui-component-syles/plugins/plugin-perfect-scrollbar";
+// Core CSS
+@import "ui-component-syles/buttons";
+@import "ui-component-syles/inputs";
+@import "ui-component-syles/typography";
+@import "ui-component-syles/misc";
+@import "ui-component-syles/checkboxes-radio";
+@import "ui-component-syles/_margin-pading-framwork-styles";
+// components
+@import "ui-component-syles/navbar";
+@import "ui-component-syles/page-header";
+@import "ui-component-syles/dropdown";
+@import "ui-component-syles/alerts";
+@import "ui-component-syles/images";
+@import "ui-component-syles/nucleo-outline";
+@import "ui-component-syles/tables";
+@import "ui-component-syles/sidebar-and-main-panel";
+@import "ui-component-syles/footers";
+@import "ui-component-syles/fixed-plugin";
+// cards
+@import "ui-component-syles/cards";
+@import "ui-component-syles/cards/card-plain";
+@import "ui-component-syles/cards/card-chart";
+@import "ui-component-syles/cards/card-user";
+@import "ui-component-syles/cards/card-map";
+@import "ui-component-syles/responsive";
+
